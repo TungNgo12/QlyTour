@@ -1,0 +1,167 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>TMS | Tourism Management System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Tourism Management System In PHP" />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
+<link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel='stylesheet'/>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="js/wow.min.js"></script>
+	<script>
+		 new WOW().init();
+	</script>
+  <style>
+		.errorWrap {
+    padding: 10px;
+    margin: 0 0 20px 0;
+    background: #fff;
+    border-left: 4px solid #dd3d36;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+.succWrap{
+    padding: 10px;
+    margin: 0 0 20px 0;
+    background: #fff;
+    border-left: 4px solid #5cb85c;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+    box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+}
+		</style>
+</head>
+<body>
+<!-- top-header -->
+<div class="top-header">
+    {% if session.loggedin %}
+    <div class="container">
+		<ul class="tp-hd-lft wow fadeInLeft animated" data-wow-delay=".5s">
+			<li class="hm"><a href="index.html"><i class="fa fa-home"></i></a></li>
+			<li class="prnt"><a href="/profile">My Profile</a></li>
+			<li class="prnt"><a href="/password_update">Change Password</a></li>
+			<li class="prnt"><a href="/tour_history">My Tour History</a></li>
+		</ul>
+		<ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s"> 
+			<li class="tol">Welcome :</li>				
+			<li class="sig">{{ session.get('mail') }}</li> 
+			<li class="sigi"><a href="/logout" >/ Logout</a></li>
+        </ul>
+		<div class="clearfix"></div>
+	</div>
+    {% else %}
+    <div class="container">
+		<ul class="tp-hd-lft wow fadeInLeft animated" data-wow-delay=".5s">
+			<li class="hm"><a href="/"><i class="fa fa-home"></i></a></li>
+			<li class="hm"><a href="admin/login">Admin Login</a></li>
+		</ul>
+		<ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s"> 
+			<li class="tol">Toll Number : 123-4568790</li>				
+			<li class="sig"><a href="#" data-toggle="modal" data-target="#myModal" >Sign Up</a></li> 
+			<li class="sigi"><a href="/login" data-toggle="modal" data-target="#myModal4" >/ Sign In</a></li>
+        </ul>
+		<div class="clearfix"></div>
+	</div>
+    {% endif %}
+</div>
+<!--- /top-header ---->
+<!--- header ---->
+<div class="header">
+	<div class="container">
+		<div class="logo wow fadeInDown animated" data-wow-delay=".5s">
+			<a href="index.php">Tourism <span>Management System</span></a>	
+		</div>
+	
+		<div class="lock fadeInDown animated" data-wow-delay=".5s"> 
+			<li><i class="fa fa-lock"></i></li>
+            <li><div class="securetxt">SAFE &amp; SECURE </div></li>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!--- /header ---->
+<!--- footer-btm ---->
+<div class="footer-btm wow fadeInLeft animated" data-wow-delay=".5s">
+	<div class="container">
+	<div class="navigation">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+				  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				  </button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<nav class="cl-effect-1">
+						<ul class="nav navbar-nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/about">About</a></li>
+                            <li><a href="/package_list">Tour Packages</a></li>
+                            <li><a href="/privacy">Privacy Policy</a></li>
+                            <li><a href="/terms">Terms of Use</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
+								<li><a href="enquiry"> Enquiry </a>  </li>
+						</ul>
+					</nav>
+				</div>	
+			</nav>
+		</div>
+		
+		<div class="clearfix"></div>
+	</div>
+</div><div class="banner-1 ">
+	<div class="container">
+		<h1 class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;">TMS-Tourism Management System</h1>
+	</div>
+</div>
+<!--- /banner-1 ---->
+<!--- privacy ---->
+<div class="privacy">
+	<div class="container">
+		<h3 class="wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">aboutus</h3>
+        <p align="justify"><font size="2"><strong><font color="#990000">(1) ACCEPTANCE OF TERMS</font><br><br></strong>Welcome to Yahoo! India. 1Yahoo Web Services India Private Limited Yahoo", "we" or "us" as the case may be) provides the Service (defined below) to you, subject to the following Terms of Service ("TOS"), which may be updated by us from time to time without notice to you. You can review the most current version of the TOS at any time at: <a href="http://in.docs.yahoo.com/info/terms/">http://in.docs.yahoo.com/info/terms/</a>. In addition, when using particular Yahoo services or third party services, you and Yahoo shall be subject to any posted guidelines or rules applicable to such services which may be posted from time to time. All such guidelines or rules, which maybe subject to change, are hereby incorporated by reference into the TOS. In most cases the guides and rules are specific to a particular part of the Service and will assist you in applying the TOS to that part, but to the extent of any inconsistency between the TOS and any guide or rule, the TOS will prevail. We may also offer other services from time to time that are governed by different Terms of Services, in which case the TOS do not apply to such other services if and to the extent expressly excluded by such different Terms of Services. Yahoo also may offer other services from time to time that are governed by different Terms of Services. These TOS do not apply to such other services that are governed by different Terms of Service. </font></p>
+        <p align="justify"><font size="2">Welcome to Yahoo! India. Yahoo Web Services India Private Limited Yahoo", "we" or "us" as the case may be) provides the Service (defined below) to you, subject to the following Terms of Service ("TOS"), which may be updated by us from time to time without notice to you. You can review the most current version of the TOS at any time at: </font><a href="http://in.docs.yahoo.com/info/terms/"><font size="2">http://in.docs.yahoo.com/info/terms/</font></a><font size="2">. In addition, when using particular Yahoo services or third party services, you and Yahoo shall be subject to any posted guidelines or rules applicable to such services which may be posted from time to time. All such guidelines or rules, which maybe subject to change, are hereby incorporated by reference into the TOS. In most cases the guides and rules are specific to a particular part of the Service and will assist you in applying the TOS to that part, but to the extent of any inconsistency between the TOS and any guide or rule, the TOS will prevail. We may also offer other services from time to time that are governed by different Terms of Services, in which case the TOS do not apply to such other services if and to the extent expressly excluded by such different Terms of Services. Yahoo also may offer other services from time to time that are governed by different Terms of Services. These TOS do not apply to such other services that are governed by different Terms of Service. </font></p>
+        <p align="justify"><font size="2">Welcome to Yahoo! India. Yahoo Web Services India Private Limited Yahoo", "we" or "us" as the case may be) provides the Service (defined below) to you, subject to the following Terms of Service ("TOS"), which may be updated by us from time to time without notice to you. You can review the most current version of the TOS at any time at: </font><a href="http://in.docs.yahoo.com/info/terms/"><font size="2">http://in.docs.yahoo.com/info/terms/</font></a><font size="2">. In addition, when using particular Yahoo services or third party services, you and Yahoo shall be subject to any posted guidelines or rules applicable to such services which may be posted from time to time. All such guidelines or rules, which maybe subject to change, are hereby incorporated by reference into the TOS. In most cases the guides and rules are specific to a particular part of the Service and will assist you in applying the TOS to that part, but to the extent of any inconsistency between the TOS and any guide or rule, the TOS will prevail. We may also offer other services from time to time that are governed by different Terms of Services, in which case the TOS do not apply to such other services if and to the extent expressly excluded by such different Terms of Services. Yahoo also may offer other services from time to time that are governed by different Terms of Services. These TOS do not apply to such other services that are governed by different Terms of Service. </font></p>
+                                                
+	</div>
+</div>
+<!--- /privacy ---->
+<!--- footer-top ---->
+<!--- /footer-top ---->
+
+
+
+
+<!--- /footer-top ---->
+<!---copy-right ---->
+<div class="copy-right">
+	<div class="container">
+	
+		<div class="footer-social-icons wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
+			<ul>
+				<li><a class="facebook" href="#"><span>Facebook</span></a></li>
+				<li><a class="twitter" href="#"><span>Twitter</span></a></li>
+				<li><a class="flickr" href="#"><span>Flickr</span></a></li>
+				<li><a class="googleplus" href="#"><span>Google+</span></a></li>
+				<li><a class="dribbble" href="#"><span>Dribbble</span></a></li>
+			</ul>
+		</div>
+		<p class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"> TMS . All Rights Reserved </p>
+	</div>
+</div>
+</body>
+</html>

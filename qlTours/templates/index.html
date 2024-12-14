@@ -1,0 +1,182 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>TMS | Tourism Management System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
+<link href="{{ url_for('static', filename='css/font-awesome.css') }}" rel='stylesheet'/>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700,300' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href="css/font-awesome.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="top-header">
+		{% if session.loggedin %}
+		<div class="container">
+			<ul class="tp-hd-lft wow fadeInLeft animated" data-wow-delay=".5s">
+				<li class="hm"><a href="/"><i class="fa fa-home"></i></a></li>
+				<li class="prnt"><a href="/profile">My Profile</a></li>
+				<li class="prnt"><a href="/password_update">Change Password</a></li>
+				<li class="prnt"><a href="/tour_history">My Tour History</a></li>
+			</ul>
+			<ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s"> 
+				<li class="tol">Welcome :</li>				
+				<li class="sig">{{ session.get('mail') }}</li>
+				<li class="sigi"><a href="/logout" >/ Logout</a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		{% else %}
+		<div class="container">
+			<ul class="tp-hd-lft wow fadeInLeft animated" data-wow-delay=".5s">
+				<li class="hm"><a href="/"><i class="fa fa-home"></i></a></li>
+				<li class="hm"><a href="admin/login">Admin Login</a></li>
+			</ul>
+			<ul class="tp-hd-rgt wow fadeInRight animated" data-wow-delay=".5s"> 
+				<li class="tol">Toll Number : 123-4568790</li>				
+				<li class="sig"><a href="#" data-toggle="modal" data-target="#myModal" >Sign Up</a></li> 
+				<li class="sigi"><a href="/login" data-toggle="modal" data-target="#myModal4" >/ Sign In</a></li>
+			</ul>
+			<div class="clearfix"></div>
+		</div>
+		{% endif %}
+	</div>
+<!--- header ---->
+<div class="header">
+	<div class="container">
+		<div class="logo wow fadeInDown animated" data-wow-delay=".5s">
+			<a href="/">Tourism <span>Management System</span></a>	
+		</div>
+	
+		<div class="lock fadeInDown animated" data-wow-delay=".5s"> 
+			<li><i class="fa fa-lock"></i></li>
+            <li><div class="securetxt">SAFE &amp; SECURE </div></li>
+			<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!--- /header ---->
+<!--- footer-btm ---->
+<div class="footer-btm wow fadeInLeft animated" data-wow-delay=".5s">
+	<div class="container">
+	<div class="navigation">
+			<nav class="navbar navbar-default">
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<nav class="cl-effect-1">
+						<ul class="nav navbar-nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/about">About</a></li>
+                            <li><a href="/package_list">Tour Packages</a></li>
+                            <li><a href="/privacy">Privacy Policy</a></li>
+                            <li><a href="/terms">Terms of Use</a></li>
+                            <li><a href="/contact">Contact Us</a></li>
+								<li><a href="enquiry"> Enquiry </a>  </li>
+						</ul>
+					</nav>
+				</div>	
+			</nav>
+		</div>
+		
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<div class="banner" style="background: url('{{ url_for('static', filename='images/3.jpg') }}'); background-size: cover; height: 700px;">
+	<!-- Nội dung khác -->
+</div>
+
+<!---holiday---->
+<div class="container">
+	<div class="holiday" >
+		<h3>Package List</h3>
+		{% for row in t1_result %}
+		<div class="rom-btm">
+			<div class="col-md-3 room-left wow fadeInLeft animated" data-wow-delay=".5s">
+				<img src="{{ url_for('static', filename='images/pacakgeimages/' + row[7]) }}" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-6 room-midle wow fadeInUp animated" data-wow-delay=".5s">
+				<h4>Package Name: {{ row[1] }}</h4>
+				<h6>Package Type : {{ row[2] }}</h6>
+				<p><b>Package Location :</b> {{ row[3] }}</p>
+				<p><b>Features</b> {{ row[5] }} </p>
+			</div>
+			<div class="col-md-3 room-right wow fadeInRight animated" data-wow-delay=".5s">
+				<h5>USD {{ row[4] }}</h5>
+				<a href="/details/?id={{ row[0] }}" class="view">Details</a>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		{% endfor %}
+		<div>
+			<a href="package_list" class="view">View More Packages</a>
+		</div>
+	</div>
+</div>
+
+<!--- routes ---->
+<div class="routes">
+	<div class="container">
+		<div class="col-md-4 routes-left wow fadeInRight animated" data-wow-delay=".5s">
+			<div class="rou-left">
+				<a href="#"><i class="glyphicon glyphicon-list-alt"></i></a>
+			</div>
+			<div class="rou-rgt wow fadeInDown animated" data-wow-delay=".5s">
+				<h3>80000</h3>
+				<p>Enquiries</p>
+			</div>
+				<div class="clearfix"></div>
+		</div>
+		<div class="col-md-4 routes-left">
+			<div class="rou-left">
+				<a href="#"><i class="fa fa-user"></i></a>
+			</div>
+			<div class="rou-rgt">
+				<h3>1900</h3>
+				<p>Registered users</p>
+			</div>
+				<div class="clearfix"></div>
+		</div>
+		<div class="col-md-4 routes-left wow fadeInRight animated" data-wow-delay=".5s">
+			<div class="rou-left">
+				<a href="#"><i class="fa fa-ticket"></i></a>
+			</div>
+			<div class="rou-rgt">
+				<h3>7,00,00,000+</h3>
+				<p>Booking</p>
+			</div>
+				<div class="clearfix"></div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+
+<!--- /footer-top ---->
+<!---copy-right ---->
+<div class="copy-right">
+	<div class="container">
+	
+		<div class="footer-social-icons wow fadeInDown animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInDown;">
+			<ul>
+				<li><a class="facebook" href="https://www.facebook.com/dom.nguyenvanhoan.kariatnguyen"><span>Facebook</span></a></li>
+				<li><a class="twitter" href="https://x.com/"><span>Twitter</span></a></li>
+				<li><a class="flickr" href="https://flickr.com"><span>Flickr</span></a></li>
+				<li><a class="googleplus" href="https://google.com"><span>Google+</span></a></li>
+				<li><a class="dribbble" href="https://dribbble.com/"><span>Dribbble</span></a></li>
+			</ul>
+		</div>
+		<p class="wow zoomIn animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: zoomIn;"> TMS . All Rights Reserved </p>
+	</div>
+</div>
+
+</body>
+</html>
